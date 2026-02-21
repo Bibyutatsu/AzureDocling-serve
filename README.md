@@ -17,9 +17,9 @@ license: mit
 
 | | URL |
 |---|---|
-| **🎮 Demo UI** | [huggingface.co/spaces/Bibyutatsu/AzureDocling-serve](https://Bibyutatsu-AzureDocling-serve.hf.space/ui) |
-| **📖 API Docs** | [Bibyutatsu-AzureDocling-serve.hf.space/docs](https://Bibyutatsu-AzureDocling-serve.hf.space/docs) |
-| **📐 Scalar Docs** | [Bibyutatsu-AzureDocling-serve.hf.space/scalar](https://Bibyutatsu-AzureDocling-serve.hf.space/scalar) |
+| **🎮 Demo UI** | [huggingface.co/spaces/Bibyutatsu/HF-docling-serve](https://Bibyutatsu-HF-docling-serve.hf.space/ui) |
+| **📖 API Docs** | [Bibyutatsu-HF-docling-serve.hf.space/docs](https://Bibyutatsu-HF-docling-serve.hf.space/docs) |
+| **📐 Scalar Docs** | [Bibyutatsu-HF-docling-serve.hf.space/scalar](https://Bibyutatsu-HF-docling-serve.hf.space/scalar) |
 
 > **Note**: The Space sleeps after ~48h of inactivity. The first request after sleep takes ~2–5 min to cold-start (ML models loading). Subsequent requests are fast.
 
@@ -44,7 +44,7 @@ Markdown, JSON (Docling Document format), Text, Doctags
 
 ## 🔌 API Reference
 
-Base URL: `https://Bibyutatsu-AzureDocling-serve.hf.space`
+Base URL: `https://Bibyutatsu-HF-docling-serve.hf.space`
 
 ### Document Conversion
 
@@ -52,7 +52,7 @@ Base URL: `https://Bibyutatsu-AzureDocling-serve.hf.space`
 Convert documents by providing URLs. Waits for completion and returns the result.
 
 ```bash
-curl -X POST "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/convert/source" \
+curl -X POST "https://Bibyutatsu-HF-docling-serve.hf.space/v1/convert/source" \
   -H "Content-Type: application/json" \
   -d '{
     "sources": [
@@ -65,7 +65,7 @@ curl -X POST "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/convert/source" 
 Upload a local file for conversion.
 
 ```bash
-curl -X POST "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/convert/file" \
+curl -X POST "https://Bibyutatsu-HF-docling-serve.hf.space/v1/convert/file" \
   -F "files=@/path/to/document.pdf"
 ```
 
@@ -73,7 +73,7 @@ curl -X POST "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/convert/file" \
 Start a conversion task and get a task ID back immediately.
 
 ```bash
-curl -X POST "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/convert/source/async" \
+curl -X POST "https://Bibyutatsu-HF-docling-serve.hf.space/v1/convert/source/async" \
   -H "Content-Type: application/json" \
   -d '{
     "sources": [
@@ -85,7 +85,7 @@ curl -X POST "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/convert/source/a
 #### Convert from File Upload (Async)
 
 ```bash
-curl -X POST "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/convert/file/async" \
+curl -X POST "https://Bibyutatsu-HF-docling-serve.hf.space/v1/convert/file/async" \
   -F "files=@/path/to/document.pdf"
 ```
 
@@ -96,7 +96,7 @@ Split documents into chunks for use in RAG pipelines:
 #### Hybrid Chunker (from URL)
 
 ```bash
-curl -X POST "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/chunk/hybrid/source" \
+curl -X POST "https://Bibyutatsu-HF-docling-serve.hf.space/v1/chunk/hybrid/source" \
   -H "Content-Type: application/json" \
   -d '{
     "sources": [
@@ -108,7 +108,7 @@ curl -X POST "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/chunk/hybrid/sou
 #### Hierarchical Chunker (from URL)
 
 ```bash
-curl -X POST "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/chunk/hierarchical/source" \
+curl -X POST "https://Bibyutatsu-HF-docling-serve.hf.space/v1/chunk/hierarchical/source" \
   -H "Content-Type: application/json" \
   -d '{
     "sources": [
@@ -123,17 +123,17 @@ curl -X POST "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/chunk/hierarchic
 
 ```bash
 # Check task status
-curl "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/task/{task_id}/status"
+curl "https://Bibyutatsu-HF-docling-serve.hf.space/v1/task/{task_id}/status"
 
 # Get task result
-curl "https://Bibyutatsu-AzureDocling-serve.hf.space/v1/task/{task_id}/result"
+curl "https://Bibyutatsu-HF-docling-serve.hf.space/v1/task/{task_id}/result"
 ```
 
 ### Health & Info
 
 ```bash
 # Version info
-curl "https://Bibyutatsu-AzureDocling-serve.hf.space/version"
+curl "https://Bibyutatsu-HF-docling-serve.hf.space/version"
 ```
 
 ---
@@ -143,7 +143,7 @@ curl "https://Bibyutatsu-AzureDocling-serve.hf.space/version"
 ```python
 import requests
 
-BASE_URL = "https://Bibyutatsu-AzureDocling-serve.hf.space"
+BASE_URL = "https://Bibyutatsu-HF-docling-serve.hf.space"
 
 # Convert a PDF from URL
 response = requests.post(
@@ -208,10 +208,10 @@ This repo pushes to **both** GitHub and Hugging Face Spaces:
 ```bash
 # GitHub (source of truth)
 git remote -v
-# origin  https://github.com/Bibyutatsu/AzureDocling-serve.git
+# origin  https://github.com/Bibyutatsu/HF-docling-serve.git
 
 # HF Spaces (deployment)
-# hf      https://huggingface.co/spaces/Bibyutatsu/AzureDocling-serve
+# hf      https://huggingface.co/spaces/Bibyutatsu/HF-docling-serve
 
 # Push to both
 git push origin main
