@@ -203,7 +203,7 @@ This repository deploys the official [`ghcr.io/docling-project/docling-serve`](h
 │  ├── FROM docling-serve:latest       │
 │  ├── app_wrapper.py                  │
 │  │   ├── Root "/" → "/ui/" redirect  │
-│  │   ├── slowapi rate limiter        │
+│  │   ├── IP rate limiter (in-memory)  │
 │  │   └── Concurrency semaphore       │
 │  └── Exposes Port: 7860              │
 ├──────────────────────────────────────┤
@@ -215,7 +215,7 @@ This repository deploys the official [`ghcr.io/docling-project/docling-serve`](h
 ```
 
 **Why a custom wrapper?**  
-HF Spaces health checks require a response at `/`. The wrapper also adds per-IP rate limiting (via `slowapi`) and a global concurrency semaphore to prevent memory exhaustion on the free tier.
+HF Spaces health checks require a response at `/`. The wrapper also adds per-IP rate limiting (sliding-window, in-memory) and a global concurrency semaphore to prevent memory exhaustion on the free tier.
 
 ---
 
